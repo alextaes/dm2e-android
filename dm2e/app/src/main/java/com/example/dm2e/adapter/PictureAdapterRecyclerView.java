@@ -1,6 +1,7 @@
 package com.example.dm2e.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.dm2e.R;
 import com.example.dm2e.model.Picture;
+import com.example.dm2e.view.PictureDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -48,6 +50,15 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
 
         //Recurso para traer imagenes desde Internet a traves de la URL
         Picasso.get().load(picture.getPicture()).into(holder.pictureCard);
+
+
+        holder.pictureCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, PictureDetailActivity.class);
+                activity.startActivity(intent);
+            }
+        });
 
     }
 

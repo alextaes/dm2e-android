@@ -51,9 +51,9 @@ public class HomeFragment extends Fragment {
 
     public ArrayList<Picture> buildPictures(){
         ArrayList<Picture> pictures = new ArrayList<>();
-        pictures.add(new Picture("https://www.novalandtours.com/highlight/156.jpg", "Uriel Ramírez", "4 días", "3 Me Gusta"));
-        pictures.add(new Picture("https://www.novalandtours.com/highlight/417.jpg", "Juan Pablo", "3 días", "10 Me Gusta"));
-        pictures.add(new Picture("https://www.novalandtours.com/highlight/282.jpg", "Anahi Salgado", "2 días", "9 Me Gusta"));
+        pictures.add(new Picture("https://www.novalandtours.com/highlight/156.jpg", "Pablo Ramírez", "4 días", "3 Me Gusta"));
+        pictures.add(new Picture("https://www.novalandtours.com/highlight/417.jpg", "Juan Castro", "3 días", "10 Me Gusta"));
+        pictures.add(new Picture("https://www.novalandtours.com/highlight/282.jpg", "David Salgado", "2 días", "9 Me Gusta"));
         return pictures;
     }
 

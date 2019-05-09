@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">dm2e</string>
-    <string name="title_activity_reference">ReferenceActivity</string>
+    <string name="app_name" translatable="false">dm2e</string>
+    <string name="title_activity_reference" translatable="false">ReferenceActivity</string>
     <string name="hint_username">Nombre de usuario</string>
     <string name="hint_password">Contraseña</string>
     <string name="text_button_login">LOGIN</string>
@@ -13,7 +13,7 @@
     <string name="hint_confirmPasswd">Confirmar contraseña</string>
     <string name="text_button_createaccount">Registrate</string>
     <string name="toolbar_title_createaccount">Crear cuenta</string>
-    <string name="username_Card">Uriel Ramírez</string>
+    <string name="username_Card" translatable="false">Paco Ramírez</string>
     <string name="firstword_card">Hace</string>
     <string name="timecard_card">4 días</string>
     <string name="likenumbercard_card">10 Me Gusta</string>
@@ -26,4 +26,7 @@
 
     <!-- The class name to the ScrollingChildBehavior required for AppBarLayout -->
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="secondword_detail">Me Gusta</string>
+    <string name="titleimagedetail">\"Todo copas en la playa\"</string>
+    <string name="lorem">Lorem fistrum ese que llega ese que llega se calle ustée fistro diodenoo llevame al sircoo no te digo trigo por no llamarte Rodrigor amatomaa tiene musho peligro de la pradera. Hasta luego Lucas de la pradera apetecan apetecan ese que llega torpedo sexuarl llevame al sircoo. Se calle ustée benemeritaar se calle ustée no te digo trigo por no llamarte Rodrigor de la pradera caballo blanco caballo negroorl te voy a borrar el cerito ese pedazo de condemor qué dise usteer. Hasta luego Lucas me cago en tus muelas te va a hasé pupitaa por la gloria de mi madre. Torpedo no te digo trigo por no llamarte Rodrigor ese hombree papaar papaar quietooor fistro ahorarr ahorarr a wan diodeno. Al ataquerl sexuarl diodeno jarl por la gloria de mi madre ahorarr.</string>
 </resources>
