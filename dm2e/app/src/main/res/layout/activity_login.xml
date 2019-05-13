@@ -26,7 +26,8 @@
                 android:layout_width="215dp"
                 android:layout_height="96dp"
                 android:layout_centerInParent="true"
-                android:background="@drawable/dm2e_logo" />
+                android:background="@drawable/dm2e_logo"
+                android:onClick="goWeb"/>
 
         </RelativeLayout>
         
