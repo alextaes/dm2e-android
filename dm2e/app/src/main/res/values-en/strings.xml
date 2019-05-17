@@ -20,4 +20,11 @@
     <string name="tab_profile">Profile</string>
     <string name="secondword_detail">Me Gusta</string>
     <string name="searchhinttext">busqueda</string>
+    <string name="login_toast">Insert username and password</string>
+    <string name="login_toast_username">Insert username</string>
+    <string name="login_toast_password">Insert password</string>
+    <string name="login_error">An error happened: </string>
+    <string name="hint_title">Título</string>
+
+
 </resources>

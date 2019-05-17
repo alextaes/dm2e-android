@@ -5,11 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.dm2e.R;
-import com.example.dm2e.view.fragment.HomeFragment;
+import com.example.dm2e.post.view.HomeFragment;
 import com.example.dm2e.view.fragment.ProfileFragment;
 import com.example.dm2e.view.fragment.SearchFragment;
 import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
 public class ContainerActivity extends AppCompatActivity {
