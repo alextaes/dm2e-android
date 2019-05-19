@@ -37,4 +37,10 @@
     <string name="transitionname_picture">transitionnamepicture</string>
     <string name="searchhinttext">busqueda</string>
     <string name="hint_title">Título</string>
+    <string name="hint_description">Descripción</string>
+    <string name="text_button_createpost">Crear Post</string>
+
+    <string name="facebook_app_id">687090585094793</string>
+    <string name="fb_login_protocol_scheme">fb687090585094793</string>
+
 </resources>

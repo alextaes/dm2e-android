@@ -1,8 +1,11 @@
 package com.example.dm2e.login.presenter;
 
+import android.app.Activity;
+
 import com.example.dm2e.login.interactor.LoginInteractor;
 import com.example.dm2e.login.interactor.LoginInteractorImpl;
 import com.example.dm2e.login.view.LoginView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginPresenterImpl implements LoginPresenter {
 
@@ -17,10 +20,10 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     @Override
-    public void signIn(String username, String password) {
+    public void signIn(String username, String password, Activity activity, FirebaseAuth firebaseAuth) {
         loginView.disableInputs();
         loginView.showProgressBar();
-        interactor.signIn(username, password);
+        interactor.signIn(username, password, activity, firebaseAuth);
     }
 
     @Override

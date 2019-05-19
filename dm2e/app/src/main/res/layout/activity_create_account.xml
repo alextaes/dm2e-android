@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CreateAccountActivity">
+    tools:context=".login.view.CreateAccountActivity">
 
 
     <include layout="@layout/actionbar_toolbar"></include>
@@ -67,7 +67,7 @@
                 android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/passwd"
+                    android:id="@+id/password_createaccount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_passwd"
