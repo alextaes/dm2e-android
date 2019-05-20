@@ -24,9 +24,11 @@
     <string name="login_toast_username">Insert username</string>
     <string name="login_toast_password">Insert password</string>
     <string name="login_error">An error happened: </string>
-    <string name="hint_title">Título</string>
-    <string name="hint_description">Descripción</string>
-    <string name="text_button_createpost">Crear Post</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_description">Description</string>
+    <string name="text_button_createpost">Create Post</string>
+    <string name="menu_signout">Logout</string>
+    <string name="menu_about">About</string>
 
 
 </resources>
