@@ -120,7 +120,7 @@ public class HomeFragment extends Fragment {
         if(requestCode == REQUEST_CAMERA && resultCode == getActivity().RESULT_OK) {
             Log.d("HomeFragment","CAMERA OK!");
             Intent i = new Intent(getActivity(), NewPostActivity.class);
-            i.putExtra("PHOTO_PATH_THEME", photoPathTemp);
+            i.putExtra("PHOTO_PATH_TEMP", photoPathTemp);
             startActivity(i);
 
         }
