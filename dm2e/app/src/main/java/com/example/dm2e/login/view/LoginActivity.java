@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.crashlytics.android.Crashlytics;
 import com.example.dm2e.R;
 import com.example.dm2e.login.presenter.LoginPresenter;
 import com.example.dm2e.login.presenter.LoginPresenterImpl;
@@ -54,6 +56,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Crashlytics.log("Inicio "+ TAG);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
 
@@ -85,7 +89,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         loginButtonFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.w(TAG, "Facebook login Success Token: " + loginResult.getAccessToken().getApplicationId());
+               // Log.w(TAG, "Facebook login Success Token: " + loginResult.getAccessToken().getApplicationId());
+                Crashlytics.log(Log.WARN,TAG,"Facebook login Success Token: " + loginResult.getAccessToken().getApplicationId());
                 signInFacebookFirebase(loginResult.getAccessToken());
             }
 
@@ -96,8 +101,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
             @Override
             public void onError(FacebookException error) {
-                Log.w(TAG, "Facebook login ERROR: " + error.toString());
+                //Log.w(TAG, "Facebook login ERROR: " + error.toString());
+                Crashlytics.log(Log.WARN,TAG,"Facebook login ERROR: " + error.toString());
                 error.printStackTrace();
+                Crashlytics.logException(error);
             }
         });
 
@@ -107,7 +114,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null) {
-                    Log.w(TAG,"Usuario logueado " + firebaseUser.getEmail());
+                    //Log.w(TAG,"Usuario logueado " + firebaseUser.getEmail());
+                    Crashlytics.log(Log.WARN,TAG,"Usuario logueado " + firebaseUser.getEmail());
                     goHome();
 
                 } else {
@@ -135,8 +143,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
                     editor.commit();
 
                     goHome();
+                    Crashlytics.log(Log.WARN,TAG,"Login Facebook exitoso");
                     Toast.makeText(LoginActivity.this, "Login Facebook exitoso", Toast.LENGTH_SHORT).show();
                 }else {
+                    Crashlytics.log(Log.WARN,TAG,"Login Facebook NO exitoso");
                     Toast.makeText(LoginActivity.this, "Login Facebook NO exitoso", Toast.LENGTH_SHORT).show();
                 }
             }

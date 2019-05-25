@@ -14,9 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.dm2e.R;
 import com.example.dm2e.model.Picture;
-import com.example.dm2e.view.PictureDetailActivity;
+import com.example.dm2e.post.view.PictureDetailActivity;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 

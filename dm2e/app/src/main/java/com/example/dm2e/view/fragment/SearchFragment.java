@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.dm2e.R;
 import com.example.dm2e.adapter.PictureAdapterRecyclerView;
 import com.example.dm2e.model.Picture;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 public class SearchFragment extends Fragment {
 
 
+    private static final String TAG = "SearchFragment";
+
     public SearchFragment() {
         // Required empty public constructor
     }
@@ -29,7 +32,8 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
+        Crashlytics.log("Inicio "+ TAG);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         RecyclerView picturesRecycler = (RecyclerView) view.findViewById(R.id.searchFragment);

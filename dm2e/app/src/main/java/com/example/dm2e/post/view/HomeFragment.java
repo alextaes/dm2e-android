@@ -17,6 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.crashlytics.android.Crashlytics;
 import com.example.dm2e.R;
 import com.example.dm2e.adapter.PictureAdapterRecyclerView;
 import com.example.dm2e.model.Picture;
@@ -32,6 +34,7 @@ import java.util.Date;
 public class HomeFragment extends Fragment {
 
     private static final int REQUEST_CAMERA = 1;
+    private static final String TAG = "HomeFragment";
     private FloatingActionButton fabCamera;
     private String photoPathTemp = "";
 
@@ -42,6 +45,8 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Crashlytics.log("Inicio "+ TAG);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         showToolbar(getResources().getString(R.string.tab_home), false, view);
@@ -77,11 +82,10 @@ public class HomeFragment extends Fragment {
             File photoFile = null;
 
             try {
-
                 photoFile = createImageFile();
-
             }catch (Exception e) {
                 e.getMessage();
+                Crashlytics.logException(e);
             }
 
             //Cuando tomamos la foto, comprueba que se haya almacenado en la variable

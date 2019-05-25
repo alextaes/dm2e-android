@@ -30,10 +30,18 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- The class name to the ScrollingChildBehavior required for AppBarLayout -->
-    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">
+        android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="secondword_detail">Me Gusta</string>
     <string name="titleimagedetail">\"Todo copas en la playa\"</string>
-    <string name="lorem">Lorem fistrum ese que llega ese que llega se calle ustée fistro diodenoo llevame al sircoo no te digo trigo por no llamarte Rodrigor amatomaa tiene musho peligro de la pradera. Hasta luego Lucas de la pradera apetecan apetecan ese que llega torpedo sexuarl llevame al sircoo. Se calle ustée benemeritaar se calle ustée no te digo trigo por no llamarte Rodrigor de la pradera caballo blanco caballo negroorl te voy a borrar el cerito ese pedazo de condemor qué dise usteer. Hasta luego Lucas me cago en tus muelas te va a hasé pupitaa por la gloria de mi madre. Torpedo no te digo trigo por no llamarte Rodrigor ese hombree papaar papaar quietooor fistro ahorarr ahorarr a wan diodeno. Al ataquerl sexuarl diodeno jarl por la gloria de mi madre ahorarr.</string>
+    <string name="lorem">Lorem fistrum ese que llega ese que llega se calle ustée fistro diodenoo llevame al sircoo
+        no te digo trigo por no llamarte Rodrigor amatomaa tiene musho peligro de la pradera. Hasta luego Lucas de la
+        pradera apetecan apetecan ese que llega torpedo sexuarl llevame al sircoo. Se calle ustée benemeritaar se
+        calle ustée no te digo trigo por no llamarte Rodrigor de la pradera caballo blanco caballo negroorl te voy a
+        borrar el cerito ese pedazo de condemor qué dise usteer. Hasta luego Lucas me cago en tus muelas te va a hasé
+        pupitaa por la gloria de mi madre. Torpedo no te digo trigo por no llamarte Rodrigor ese hombree papaar
+        papaar quietooor fistro ahorarr ahorarr a wan diodeno. Al ataquerl sexuarl diodeno jarl por la gloria de mi
+        madre ahorarr.</string>
     <string name="transitionname_picture">transitionnamepicture</string>
     <string name="searchhinttext">busqueda</string>
     <string name="hint_title">Título</string>

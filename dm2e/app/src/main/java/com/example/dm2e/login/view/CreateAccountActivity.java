@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.dm2e.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,6 +36,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
         showToolbar(getResources().getString(R.string.toolbar_title_createaccount),true);
 
+        Crashlytics.log("Inicio "+ TAG);
+
         btnJoinUs = (Button) findViewById(R.id.joinUs);
         edtEmail = (TextInputEditText) findViewById(R.id.email);
         edtPassword = (TextInputEditText) findViewById(R.id.password_createaccount);
@@ -47,10 +50,12 @@ public class CreateAccountActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null) {
-                    Log.w(TAG,"Usuario logueado " + firebaseUser.getEmail());
+                    //Log.w(TAG,"Usuario logueado " + firebaseUser.getEmail());
+                    Crashlytics.log(Log.WARN,TAG,"Usuario logueado " + firebaseUser.getEmail());
 
                 } else {
-                    Log.w(TAG,"Imposible hacer login");
+                    //Log.w(TAG,"Imposible hacer login");
+                    Crashlytics.log(Log.WARN,TAG,"Imposible hacer login");
                 }
             }
         };

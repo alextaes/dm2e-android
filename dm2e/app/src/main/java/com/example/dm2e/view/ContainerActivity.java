@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.dm2e.R;
 import com.example.dm2e.login.view.CreateAccountActivity;
 import com.example.dm2e.login.view.LoginActivity;
@@ -35,6 +36,8 @@ public class ContainerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
+
+        Crashlytics.log("Inicio "+ TAG);
 
         firebaseInitialize();
 
