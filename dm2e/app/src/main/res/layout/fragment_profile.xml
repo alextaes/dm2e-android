@@ -76,9 +76,10 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
         android:layout_width="@dimen/dimen_circleimageprofile"
         android:layout_height="@dimen/dimen_circleimageprofile"
-        android:src="@drawable/image"
+        android:src="@drawable/def_user"
         android:layout_gravity="center|top"
         android:layout_marginTop="@dimen/margintop_circleimageprofile"
         android:elevation="@dimen/elevation_circleimageprofile"

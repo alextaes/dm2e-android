@@ -16,7 +16,7 @@
             android:id="@+id/pictureCard"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_cardview"
-            android:background="@drawable/image"
+            android:background="@drawable/def_image"
             android:scaleType="centerCrop"
             android:transitionName="@string/transitionname_picture"/>
         
