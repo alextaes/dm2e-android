@@ -6,7 +6,7 @@
     <string name="dont_have_account">No account?</string>
     <string name="create_here">, Register here!</string>
     <string name="hint_email">Email</string>
-    <string name="hint_name">Name</string>
+    <string name="hint_name">Full Name</string>
     <string name="hint_user">User</string>
     <string name="hint_passwd">Password</string>
     <string name="hint_confirmPasswd">Confirm password</string>
@@ -18,7 +18,7 @@
     <string name="tab_search">Search</string>
     <string name="tab_home">Home</string>
     <string name="tab_profile">Profile</string>
-    <string name="secondword_detail">Me Gusta</string>
+    <string name="secondword_detail">Likes</string>
     <string name="searchhinttext">busqueda</string>
     <string name="login_toast">Insert username and password</string>
     <string name="login_toast_username">Insert username</string>
@@ -29,6 +29,16 @@
     <string name="text_button_createpost">Create Post</string>
     <string name="menu_signout">Logout</string>
     <string name="menu_about">About</string>
+
+
+    <string name="input_error_name">name required</string>
+    <string name="input_error_email">email required</string>
+    <string name="input_error_password">password required</string>
+    <string name="input_error_password_length">password should be atleast 6 characters long</string>
+    <string name="input_error_password_conf">password mismatch</string>
+    <string name="registration_success">Registered Successfully</string>
+    <string name="input_error_email_invalid">enter a valid email</string>
+    <string name="new_publication">Nueva publicación creada!</string>
 
 
 </resources>

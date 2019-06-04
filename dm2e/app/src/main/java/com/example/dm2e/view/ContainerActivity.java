@@ -12,9 +12,8 @@ import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.example.dm2e.R;
-import com.example.dm2e.login.view.CreateAccountActivity;
 import com.example.dm2e.login.view.LoginActivity;
-import com.example.dm2e.post.view.HomeFragment;
+import com.example.dm2e.view.fragment.HomeFragment;
 import com.example.dm2e.view.fragment.ProfileFragment;
 import com.example.dm2e.view.fragment.SearchFragment;
 import com.facebook.login.LoginManager;

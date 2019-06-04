@@ -5,9 +5,9 @@
     <dimen name="edittext_textsize_login">22sp</dimen>
 
     <dimen name="activity_horizontal_login">32dp</dimen>
-    <dimen name="activity_vertical_loginButton">12dp</dimen>
+    <dimen name="activity_vertical_loginButton">50dp</dimen>
     <dimen name="textsize_donthaveaccount">16sp</dimen>
-    <dimen name="edittext_margin_createaccount">10dp</dimen>
+    <dimen name="edittext_margin_createaccount">100dp</dimen>
     <dimen name="height_cardview">200dp</dimen>
     <dimen name="cornerradius_cardview">5dp</dimen>
     <dimen name="textsize_username_card">25sp</dimen>
@@ -34,4 +34,5 @@
     <dimen name="margintop_usernametoolbarprofile">-100dp</dimen>
     <dimen name="limitY_usernametoolbarprofile">-250dp</dimen>
     <dimen name="margintoptargety_usernametoolbarprofile">20dp</dimen>
+    <dimen name="edittext_margin_createaccount_2">20dp</dimen>
 </resources>

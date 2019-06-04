@@ -2,48 +2,58 @@ package com.example.dm2e.model;
 
 public class Picture {
 
+    private String id;
     private String picture;
     private String userName;
-    private String time;
-    private String like_number = "0";
+    private String title;
+    private String description;
+    private int likes;
 
 
-    public Picture(String picture, String userName, String time, String like_number) {
-        this.picture = picture;
-        this.userName = userName;
-        this.time = time;
-        this.like_number = like_number;
+    public Picture() {
+
     }
 
+    public Picture(String id, String picture, String userName, String title, String description) {
+        this.id = id;
+        this.picture = picture;
+        this.userName = userName;
+        this.title = title;
+        this.description = description;
+        this.likes = 0;
+    }
+
+    public String getId() {
+        return id;
+    }
     public String getPicture() {
         return picture;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
 
     public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+
+    public String getTitle() {
+        return title;
     }
 
-    public String getTime() {
-        return time;
+
+    public String getDescription() {
+        return description;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+
+    public int getLikes() {
+        return likes;
     }
 
-    public String getLike_number() {
-        return like_number;
+    public void addLikes() {
+        this.likes += 1;
     }
-
-    public void setLike_number(String like_number) {
-        this.like_number = like_number;
+    public void substractLikes() {
+        this.likes -= 1;
     }
 }

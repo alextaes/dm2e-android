@@ -21,24 +21,12 @@
             android:padding="@dimen/activity_vertical_margin"
             android:orientation="vertical">
 
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/EditTextBlack"
                 android:layout_marginTop="@dimen/edittext_margin_createaccount">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_email"/>
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/EditTextBlack">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/name"
@@ -51,20 +39,23 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/EditTextBlack">
+                android:theme="@style/EditTextBlack"
+                android:layout_marginTop="@dimen/edittext_margin_createaccount_2">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/user"
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hint_user"/>
+                    android:hint="@string/hint_email"/>
 
             </android.support.design.widget.TextInputLayout>
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/EditTextBlack">
+                android:theme="@style/EditTextBlack"
+                android:layout_marginTop="@dimen/edittext_margin_createaccount_2">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/password_createaccount"
@@ -78,7 +69,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/EditTextBlack">
+                android:theme="@style/EditTextBlack"
+                android:layout_marginTop="@dimen/edittext_margin_createaccount_2">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/confirmPasswd"
@@ -97,6 +89,11 @@
                 android:text="@string/text_button_createaccount"
                 android:theme="@style/RaisedButtonDark"
                 android:layout_marginTop="@dimen/activity_vertical_loginButton"/>
+
+            <ProgressBar
+                android:id="@+id/progressbarCreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
