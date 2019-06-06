@@ -12,11 +12,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
 import com.example.dm2e.R;
 import com.example.dm2e.adapter.PictureAdapterRecyclerView;
 import com.example.dm2e.model.Picture;
+import com.example.dm2e.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,8 +34,9 @@ import java.util.ArrayList;
 public class ProfileFragment extends Fragment {
 
     private static final String TAG = "ProfileFragment";
-    private DatabaseReference firebaseDatabasePics;
+    private DatabaseReference firebaseDatabasePics, firebaseDatabaseUsers;
     private ArrayList<Picture> pictures = new ArrayList<>();
+    TextView usernameProfile;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -59,9 +62,32 @@ public class ProfileFragment extends Fragment {
         picturesRecycler.setAdapter(pictureAdapterRecyclerView[0]);
         /////////////////////////////////
 
+        usernameProfile = view.findViewById(R.id.usernameProfile);
+
+        firebaseDatabaseUsers = FirebaseDatabase.getInstance().getReference("Users");
+
+        firebaseDatabaseUsers.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    if(userSnapshot.getKey().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                        User user = userSnapshot.getValue(User.class);
+                        Log.w(TAG, "Username -> "+user.getName());
+                        usernameProfile.setText(user.getName());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, databaseError.getMessage());
+            }
+        });
+
+        //Obtenemos de firebase las publicaciones del usuario
+
         String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
         firebaseDatabasePics = FirebaseDatabase.getInstance().getReference("Pictures").child(id);
-
         firebaseDatabasePics.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -82,24 +108,12 @@ public class ProfileFragment extends Fragment {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.w(TAG, databaseError.getMessage());
             }
         });
 
-
-        //////////////////////////////////
-
         return view;
     }
-
-    public ArrayList<Picture> buildPictures(){
-        ArrayList<Picture> pictures = new ArrayList<>();
-        pictures.add(new Picture("https://www.novalandtours.com/highlight/156.jpg", "Pablo Ramírez", "4 días", "3 Me Gusta","Hola"));
-        pictures.add(new Picture("https://www.novalandtours.com/highlight/417.jpg", "Juan Castro", "3 días", "10 Me Gusta","Hola"));
-        pictures.add(new Picture("https://www.novalandtours.com/highlight/282.jpg", "David Salgado", "2 días", "9 Me Gusta","Hola"));
-        return pictures;
-    }
-
 
 
     public void showToolbar(String tittle, boolean upButton, View view){

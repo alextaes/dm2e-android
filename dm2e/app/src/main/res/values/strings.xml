@@ -13,7 +13,7 @@
     <string name="hint_confirmPasswd">Confirmar contraseña</string>
     <string name="text_button_createaccount">Registrate</string>
     <string name="toolbar_title_createaccount">Crear cuenta</string>
-    <string name="username_Card" translatable="false">Paco Ramírez</string>
+    <string name="username_Card" translatable="false">DM2E</string>
     <string name="firstword_card">Hace</string>
     <string name="timecard_card">4 días</string>
     <string name="likenumbercard_card">Me Gusta</string>

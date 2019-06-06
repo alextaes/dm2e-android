@@ -2,6 +2,7 @@ package com.example.dm2e.view;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,11 +23,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
+import java.util.List;
+
 public class ContainerActivity extends AppCompatActivity {
     private static final String TAG = "ContainerActivity";
-    HomeFragment homeFragment;
-    ProfileFragment profileFragment;
-    SearchFragment searchFragment;
+    BottomBar bottomBar;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -40,7 +41,7 @@ public class ContainerActivity extends AppCompatActivity {
 
         firebaseInitialize();
 
-        BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        bottomBar =  findViewById(R.id.bottomBar);
         bottomBar.setDefaultTab(R.id.home);
 
         //Listener para cambiar fragment dentro del container segun la opcion elegida
@@ -127,4 +128,16 @@ public class ContainerActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            //getFragmentManager().popBackStack();
+            super.onBackPressed();
+        } else {
+            bottomBar.selectTabWithId(R.id.home);
+        }
+    }
+
 }

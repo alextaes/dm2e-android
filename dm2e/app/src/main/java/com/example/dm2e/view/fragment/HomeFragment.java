@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.crashlytics.android.Crashlytics;
 import com.example.dm2e.R;
 import com.example.dm2e.adapter.PictureAdapterRecyclerView;
@@ -28,7 +27,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -81,7 +79,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         firebaseDatabasePics = FirebaseDatabase.getInstance().getReference("Pictures");
 
         firebaseDatabasePics.addValueEventListener(new ValueEventListener() {
@@ -112,7 +109,7 @@ public class HomeFragment extends Fragment {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            Log.w(TAG, databaseError.getMessage());
                         }
                     });
                 }
@@ -120,7 +117,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.w(TAG, databaseError.getMessage());
             }
         });
 
@@ -192,5 +189,6 @@ public class HomeFragment extends Fragment {
 
 
     }
+
 
 }

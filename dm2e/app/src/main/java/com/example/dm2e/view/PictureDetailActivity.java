@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.transition.Fade;
+import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
@@ -21,8 +23,11 @@ import com.squareup.picasso.Picasso;
 
 public class PictureDetailActivity extends AppCompatActivity {
 
-    private static final String PHOTO_NAME = "JPEG_20190521_16-58-22_6704900775955634225.jpg";
     private static final String TAG = "PictureDetailActivity";
+
+    private String user, pic, title, desc;
+    private int likes;
+    private TextView userNameDetail, titleImage, descriptionImage, likeNumberDetail;
 
     private ImageView imageHeader;
     private Dm2eApplication app;
@@ -35,8 +40,24 @@ public class PictureDetailActivity extends AppCompatActivity {
 
         Crashlytics.log("Inicio "+ TAG);
 
+        userNameDetail = findViewById(R.id.userNameDetail);
+        titleImage = findViewById(R.id.titleImage);
+        descriptionImage = findViewById(R.id.descriptionImage);
+        likeNumberDetail = findViewById(R.id.likeNumberDetail);
+
         app = (Dm2eApplication) getApplicationContext();
         storageReference = app.getStorageReference();
+
+        if( getIntent().getExtras() != null ) {
+            user = getIntent().getExtras().getString("user");
+            pic = getIntent().getExtras().getString("pic");
+            title = getIntent().getExtras().getString("title");
+            desc = getIntent().getExtras().getString("desc");
+            likes = getIntent().getExtras().getInt("likes");
+        }
+
+
+
 
         imageHeader = (ImageView) findViewById(R.id.imageHeader);
 
@@ -51,7 +72,8 @@ public class PictureDetailActivity extends AppCompatActivity {
     }
 
     private void showData() {
-        storageReference.child("postImages/"+PHOTO_NAME)
+        /*
+        storageReference.child("postImages/"+pic)
                 .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -65,6 +87,12 @@ public class PictureDetailActivity extends AppCompatActivity {
                 Crashlytics.logException(e);
             }
         });
+       */
+        Picasso.get().load(pic).into(imageHeader);
+        userNameDetail.setText(user);
+        titleImage.setText(title);
+        descriptionImage.setText(desc);
+        likeNumberDetail.setText(String.valueOf(likes));
     }
 
     public void showToolbar(String tittle, boolean upButton){

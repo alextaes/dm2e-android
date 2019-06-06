@@ -44,7 +44,7 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
     //Trabajamos el paso de datos de cada objeto contenido en la lista pictures
     @Override
     public void onBindViewHolder(PictureViewHolder holder, int position) {
-        Picture picture = pictures.get(position);
+        final Picture picture = pictures.get(position);
 
         holder.usernameCard.setText(picture.getUserName());
         holder.likeNumberCard.setText(String.valueOf(picture.getLikes()));
@@ -56,7 +56,21 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
         holder.pictureCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(activity, PictureDetailActivity.class);
+
+                String user = picture.getUserName();
+                String pic = picture.getPicture();
+                String title = picture.getTitle();
+                String desc = picture.getDescription();
+                int likes = picture.getLikes();
+
+                intent.putExtra("user",user);
+                intent.putExtra("pic",pic);
+                intent.putExtra("title",title);
+                intent.putExtra("desc",desc);
+                intent.putExtra("likes",likes);
+
                 //Para que la transicion funcione correctamente, tiene que correr una version
                 //superior a Lollipop
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
