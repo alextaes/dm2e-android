@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.crashlytics.android.Crashlytics;
 import com.example.dm2e.Dm2eApplication;
@@ -42,6 +43,7 @@ public class NewPostActivity extends AppCompatActivity {
     private Dm2eApplication app;
     private StorageReference storageReference;
     private DatabaseReference firebaseDataPictures, reference;
+    private ProgressBar progressBarPost;
     private String id;
     private String username = "default";
 
@@ -55,12 +57,17 @@ public class NewPostActivity extends AppCompatActivity {
         app = (Dm2eApplication) getApplicationContext();
         storageReference = app.getStorageReference();
         id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        firebaseDataPictures = FirebaseDatabase.getInstance().getReference("Pictures").child(id);
+        //firebaseDataPictures = FirebaseDatabase.getInstance().getReference("Pictures").child(id);
+        firebaseDataPictures = FirebaseDatabase.getInstance().getReference("Pictures");
 
         imgPhoto = (ImageView) findViewById(R.id.imgPhoto);
         btnCreatePost = (Button) findViewById(R.id.btnCreatePost);
         edtTitle = findViewById(R.id.edtTitle);
         edtDescription = findViewById(R.id.edtDescription);
+        progressBarPost = (ProgressBar) findViewById(R.id.progressbarPost);
+
+        hideProgressBar();
+
 
         if( getIntent().getExtras() != null ) {
             photoPath = getIntent().getExtras().getString("PHOTO_PATH_TEMP");
@@ -98,6 +105,7 @@ public class NewPostActivity extends AppCompatActivity {
 
     private void uploadPhoto() {
 
+        showProgressBar();
         final String titulo = edtTitle.getText().toString().trim();
         final String descripcion = edtDescription.getText().toString();
 
@@ -140,7 +148,7 @@ public class NewPostActivity extends AppCompatActivity {
                     photoUrl = downloadUrl.toString();
                     Log.w(TAG, "URL PHOTO > " + photoUrl);
 
-                    Picture picture = new Picture(idPic, photoUrl, username, titulo, descripcion);
+                    Picture picture = new Picture(idPic, photoUrl, username, id, titulo, descripcion);
 
                     //Anidamos las publicaciones del ususario bajo su id en la base de datos
                     firebaseDataPictures
@@ -158,6 +166,7 @@ public class NewPostActivity extends AppCompatActivity {
                         }
                     });
 
+                    hideProgressBar();
                     finish();
                 }
 
@@ -171,6 +180,16 @@ public class NewPostActivity extends AppCompatActivity {
 
     private void showPhoto() {
         Picasso.get().load(photoPath).into(imgPhoto);
+    }
+
+    public void showProgressBar() {
+        progressBarPost.setVisibility(View.VISIBLE);
+    }
+
+
+    public void hideProgressBar() {
+        progressBarPost.setVisibility(View.GONE);
+
     }
 
 

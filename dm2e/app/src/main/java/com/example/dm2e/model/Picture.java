@@ -8,16 +8,18 @@ public class Picture {
     private String title;
     private String description;
     private int likes;
+    private String userId;
 
 
     public Picture() {
 
     }
 
-    public Picture(String id, String picture, String userName, String title, String description) {
+    public Picture(String id, String picture, String userName, String userId, String title, String description) {
         this.id = id;
         this.picture = picture;
         this.userName = userName;
+        this.userId = userId;
         this.title = title;
         this.description = description;
         this.likes = 0;
@@ -45,6 +47,9 @@ public class Picture {
         return description;
     }
 
+    public String getUserId() {
+        return userId;
+    }
 
     public int getLikes() {
         return likes;

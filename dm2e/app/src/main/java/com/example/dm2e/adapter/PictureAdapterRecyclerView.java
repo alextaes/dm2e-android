@@ -52,7 +52,6 @@ public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdap
         //Recurso para traer imagenes desde Internet a traves de la URL
         Picasso.get().load(picture.getPicture()).into(holder.pictureCard);
 
-
         holder.pictureCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

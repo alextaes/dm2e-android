@@ -20,6 +20,7 @@ import com.example.dm2e.adapter.PictureAdapterRecyclerView;
 import com.example.dm2e.model.Picture;
 import com.example.dm2e.model.User;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +39,8 @@ public class ProfileFragment extends Fragment {
     private ArrayList<Picture> pictures = new ArrayList<>();
     TextView usernameProfile;
 
+    String user;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -47,6 +50,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Crashlytics.log("Inicio "+ TAG);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
@@ -85,27 +89,28 @@ public class ProfileFragment extends Fragment {
         });
 
         //Obtenemos de firebase las publicaciones del usuario
+        firebaseDatabasePics = FirebaseDatabase.getInstance().getReference("Pictures");
 
-        String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        firebaseDatabasePics = FirebaseDatabase.getInstance().getReference("Pictures").child(id);
         firebaseDatabasePics.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 pictures.clear();
 
-                for(DataSnapshot pictureSnapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot pictureSnapshot : dataSnapshot.getChildren()) {
                     Picture picture = pictureSnapshot.getValue(Picture.class);
-                    Log.w(TAG,"id imagen: "+pictureSnapshot.getKey());
-                    pictures.add(picture);
-
+                    Log.w(TAG,picture.getUserId()+" = "+user);
+                    if(user.equals(picture.getUserId())){
+                        pictures.add(picture);
+                    }
                     pictureAdapterRecyclerView[0] =
                             new PictureAdapterRecyclerView(pictures, R.layout.cardview_picture, getActivity());
                     picturesRecycler.setAdapter(pictureAdapterRecyclerView[0]);
 
-                    Log.w(TAG,"url imagen: "+picture.getPicture());
+                    Log.w(TAG, "url imagen: " + picture.getPicture());
 
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.w(TAG, databaseError.getMessage());

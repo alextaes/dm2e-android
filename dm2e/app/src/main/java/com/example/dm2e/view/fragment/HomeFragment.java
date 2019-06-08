@@ -85,33 +85,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 pictures.clear();
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    String key = child.getKey();
 
-                    firebaseDatabasePics.child(key).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            //
+                for (DataSnapshot pictureSnapshot : dataSnapshot.getChildren()) {
+                    Picture picture = pictureSnapshot.getValue(Picture.class);
+                    Log.w(TAG, "id imagen: " + pictureSnapshot.getKey());
+                    pictures.add(picture);
 
-                            for (DataSnapshot pictureSnapshot : dataSnapshot.getChildren()) {
-                                Picture picture = pictureSnapshot.getValue(Picture.class);
-                                Log.w(TAG, "id imagen: " + pictureSnapshot.getKey());
-                                pictures.add(picture);
+                    pictureAdapterRecyclerView[0] =
+                            new PictureAdapterRecyclerView(pictures, R.layout.cardview_picture, getActivity());
+                    picturesRecycler.setAdapter(pictureAdapterRecyclerView[0]);
 
-                                pictureAdapterRecyclerView[0] =
-                                        new PictureAdapterRecyclerView(pictures, R.layout.cardview_picture, getActivity());
-                                picturesRecycler.setAdapter(pictureAdapterRecyclerView[0]);
+                    Log.w(TAG, "url imagen: " + picture.getPicture());
 
-                                Log.w(TAG, "url imagen: " + picture.getPicture());
-
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            Log.w(TAG, databaseError.getMessage());
-                        }
-                    });
                 }
             }
 
@@ -120,7 +105,6 @@ public class HomeFragment extends Fragment {
                 Log.w(TAG, databaseError.getMessage());
             }
         });
-
 
         return view;
     }

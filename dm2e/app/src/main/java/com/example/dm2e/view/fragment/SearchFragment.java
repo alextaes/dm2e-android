@@ -2,10 +2,13 @@ package com.example.dm2e.view.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,11 @@ import com.crashlytics.android.Crashlytics;
 import com.example.dm2e.R;
 import com.example.dm2e.adapter.PictureAdapterRecyclerView;
 import com.example.dm2e.model.Picture;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -24,6 +32,9 @@ public class SearchFragment extends Fragment {
 
 
     private static final String TAG = "SearchFragment";
+    private SearchView searchView;
+    private DatabaseReference firebaseDatabasePics;
+    private ArrayList<Picture> pictures = new ArrayList<>();
 
     public SearchFragment() {
         // Required empty public constructor
@@ -37,26 +48,65 @@ public class SearchFragment extends Fragment {
         Crashlytics.log("Inicio "+ TAG);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-        RecyclerView picturesRecycler = (RecyclerView) view.findViewById(R.id.searchFragment);
+        final RecyclerView picturesRecycler = (RecyclerView) view.findViewById(R.id.searchFragment);
+
+        searchView = view.findViewById(R.id.searchView);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         picturesRecycler.setLayoutManager(linearLayoutManager);
 
-        PictureAdapterRecyclerView pictureAdapterRecyclerView =
-                new PictureAdapterRecyclerView(buildPictures(), R.layout.cardview_picture, getActivity());
-        picturesRecycler.setAdapter(pictureAdapterRecyclerView);
+        final PictureAdapterRecyclerView[] pictureAdapterRecyclerView = {new PictureAdapterRecyclerView(pictures, R.layout.cardview_picture, getActivity())};
+        picturesRecycler.setAdapter(pictureAdapterRecyclerView[0]);
+
+        ///////////////////////////////////
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                final String text = searchView.getQuery().toString().toLowerCase();
+
+                firebaseDatabasePics = FirebaseDatabase.getInstance().getReference("Pictures");
+
+                firebaseDatabasePics.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        pictures.clear();
+
+                        for (DataSnapshot pictureSnapshot : dataSnapshot.getChildren()) {
+                            Picture picture = pictureSnapshot.getValue(Picture.class);
+                           String title = picture.getTitle().toLowerCase();
+                            Log.w(TAG, title+"///////"+text);
+                            if(title.contains(text)){
+                                pictures.add(picture);
+                            }
+                            pictureAdapterRecyclerView[0] =
+                                    new PictureAdapterRecyclerView(pictures, R.layout.cardview_picture, getActivity());
+                            picturesRecycler.setAdapter(pictureAdapterRecyclerView[0]);
+
+                            Log.w(TAG, "url imagen: " + picture.getPicture());
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.w(TAG, databaseError.getMessage());
+                    }
+                });
+                return false;
+            }
+        });
 
         return view;
-    }
-
-    public ArrayList<Picture> buildPictures(){
-        ArrayList<Picture> pictures = new ArrayList<>();
-        pictures.add(new Picture("https://img.difoosion.com/wp-content/blogs.dir/28/files/2016/06/fondo5.jpg", "Gabriel Mederos", "4 días", "3 Me gusta","Hola"));
-        pictures.add(new Picture("http://images.eldiario.es/canariasahora/sociedad/fondos-acentejojpg_EDIIMA20140403_0542_13.jpg", "Gabriel Caballero", "2 días", "5 Me gusta","Hola"));
-        pictures.add(new Picture("http://coolmusic.jinradio.com/wp-content/uploads/sites/2/2014/03/CoolBack7.jpg", "Pablo Dina", "1 días", "4 Me gusta","Hola"));
-        return pictures;
     }
 
 }
