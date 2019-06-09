@@ -1,5 +1,14 @@
 package com.example.dm2e.login.view;
 
+
+
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
+
 public interface LoginView {
 
     void enableInputs();

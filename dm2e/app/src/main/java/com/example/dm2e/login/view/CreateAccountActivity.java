@@ -28,6 +28,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
+
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
+
 public class CreateAccountActivity extends AppCompatActivity {
 
     private static final String TAG = "CreateAccountActivity";

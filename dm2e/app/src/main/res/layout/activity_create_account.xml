@@ -82,18 +82,29 @@
             </android.support.design.widget.TextInputLayout>
 
 
-            <Button
-                android:id="@+id/joinUs"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/text_button_createaccount"
-                android:theme="@style/RaisedButtonDark"
-                android:layout_marginTop="@dimen/activity_vertical_loginButton"/>
+                android:layout_height="wrap_content">
 
-            <ProgressBar
-                android:id="@+id/progressbarCreate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <Button
+                    android:id="@+id/joinUs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_button_createaccount"
+                    android:theme="@style/RaisedButtonDark"
+                    android:layout_centerInParent= "true"
+                    android:layout_marginTop="@dimen/activity_vertical_loginButton"/>
+
+                <ProgressBar
+                    android:id="@+id/progressbarCreate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent= "true"
+                    android:elevation="10dp"/>
+
+            </RelativeLayout>
+
+
 
         </LinearLayout>
 

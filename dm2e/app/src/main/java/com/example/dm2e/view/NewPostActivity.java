@@ -33,6 +33,16 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import java.io.ByteArrayOutputStream;
 
+
+
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
+
+
 public class NewPostActivity extends AppCompatActivity {
 
     private static final String TAG = "NewPostActivity";

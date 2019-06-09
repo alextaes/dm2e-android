@@ -29,6 +29,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+
+
+
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
+
 /**
  * A simple {@link Fragment} subclass.
  */

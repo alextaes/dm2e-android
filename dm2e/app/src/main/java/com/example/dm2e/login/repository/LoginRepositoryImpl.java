@@ -15,6 +15,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
+
 public class LoginRepositoryImpl implements LoginRepository {
 
     private static final String TAG = "LoginRepositoryImpl";

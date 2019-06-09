@@ -1,5 +1,15 @@
 package com.example.dm2e.model;
 
+
+
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
+
+
 public class Picture {
 
     private String id;

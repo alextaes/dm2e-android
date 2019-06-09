@@ -12,11 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.crashlytics.android.Crashlytics;
 import com.example.dm2e.R;
 import com.example.dm2e.login.presenter.LoginPresenter;
 import com.example.dm2e.login.presenter.LoginPresenterImpl;
+import com.example.dm2e.model.User;
 import com.example.dm2e.view.ContainerActivity;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -32,8 +32,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Arrays;
+
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
 
 public class LoginActivity extends AppCompatActivity implements LoginView{
 
@@ -48,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private CallbackManager callbackManager;
+    private DatabaseReference firebaseDataUsers;
 
 
 
@@ -66,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         login            = (Button) findViewById(R.id.login);
         loginButtonFacebook   = (LoginButton) findViewById(R.id.login_facebook);
         progressBarLogin = (ProgressBar) findViewById(R.id.progressbarLogin);
+        firebaseDataUsers = FirebaseDatabase.getInstance().getReference("Users");
 
         hideProgressBar();
 
@@ -141,6 +152,28 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("email", user.getEmail());
                     editor.commit();
+
+                    /////////////////////////
+
+                    String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                    User userFace = new User((user).getUid(), (user).getDisplayName(), (user).getEmail());
+                    firebaseDataUsers
+                            .child(id)
+                            .setValue(userFace).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if (task.isSuccessful()) {
+                                Log.w(TAG, "REGISTRADO: " + task.isSuccessful());
+                            } else {
+                                //display a failure message
+                                Log.w(TAG, "ERROR AL REGISTRAR: " + task.isSuccessful());
+                            }
+                        }
+                    });
+
+                    ////////////////////////
 
                     goHome();
                     Crashlytics.log(Log.WARN,TAG,"Login Facebook exitoso");

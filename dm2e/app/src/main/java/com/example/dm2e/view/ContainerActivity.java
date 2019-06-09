@@ -25,6 +25,16 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 import java.util.List;
 
+
+
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
+
+
 public class ContainerActivity extends AppCompatActivity {
     private static final String TAG = "ContainerActivity";
     BottomBar bottomBar;

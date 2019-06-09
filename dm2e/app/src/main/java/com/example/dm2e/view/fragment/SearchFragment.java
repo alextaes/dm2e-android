@@ -25,6 +25,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+
+
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
+
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -60,7 +70,7 @@ public class SearchFragment extends Fragment {
         final PictureAdapterRecyclerView[] pictureAdapterRecyclerView = {new PictureAdapterRecyclerView(pictures, R.layout.cardview_picture, getActivity())};
         picturesRecycler.setAdapter(pictureAdapterRecyclerView[0]);
 
-        ///////////////////////////////////
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

@@ -7,6 +7,16 @@ import com.example.dm2e.login.repository.LoginRepository;
 import com.example.dm2e.login.repository.LoginRepositoryImpl;
 import com.google.firebase.auth.FirebaseAuth;
 
+
+
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
+
+
 public class LoginInteractorImpl implements LoginInteractor {
 
     private LoginPresenter presenter;

@@ -21,6 +21,16 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+
+
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
+
+
 public class PictureDetailActivity extends AppCompatActivity {
 
     private static final String TAG = "PictureDetailActivity";

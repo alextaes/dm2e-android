@@ -19,6 +19,14 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 
+/**
+ *
+ * @author Alejandro Taghavi Espinosa
+ *
+ * Proyecto DM2E
+ */
+
+
 public class PictureAdapterRecyclerView extends RecyclerView.Adapter<PictureAdapterRecyclerView.PictureViewHolder> {
 
     private ArrayList<Picture> pictures;

@@ -8,11 +8,6 @@
     android:fitsSystemWindows="true"
     tools:context=".view.NewPostActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,22 +52,29 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/btnCreatePost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/text_button_createpost"
                 android:theme="@style/RaisedButtonDark"
+                android:layout_centerInParent= "true"
                 android:layout_marginTop="@dimen/activity_vertical_loginButton"/>
 
             <ProgressBar
                 android:id="@+id/progressbarPost"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_centerInParent= "true"
+                android:elevation="10dp"/>
+
+            </RelativeLayout>
 
         </LinearLayout>
-
-    </ScrollView>
 
 
 </android.support.design.widget.CoordinatorLayout>
